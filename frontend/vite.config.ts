@@ -14,7 +14,9 @@ export default defineConfig(({ mode }) => ({
     port: Number(process.env.PORT) || 8080,
     allowedHosts: ["calsol.onrender.com"], // ✅ same for preview builds
   },
-  plugins: [react()],
+  plugins: [react({
+    jsxRuntime: 'automatic'
+  })],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
