@@ -9,6 +9,11 @@ export default defineConfig(({ mode }) => ({
     port: process.env.PORT || 8080,
     allowedHosts: "all",
   },
+  preview: {
+    host: "::",
+    port: process.env.PORT || 8080,
+    allowedHosts: "all",
+  },
   plugins: [react()],
   resolve: {
     alias: {
