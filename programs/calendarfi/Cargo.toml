@@ -1,0 +1,25 @@
+[package]
+name = "calendarfi"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "calendarfi"
+
+[dependencies]
+anchor-lang = "0.29.0"
+anchor-spl = "0.29.0"
+solana-program = "1.18.0"
+spl-token = "4.0"
+spl-token-metadata = "0.3"
+clockwork-sdk = "2.0"
+
+[dev-dependencies]
+anchor-client = "0.29.0"
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
+

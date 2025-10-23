@@ -1,0 +1,28 @@
+{
+  "name": "calendarfi",
+  "version": "0.1.0",
+  "description": "Your Calendar is Now a Wallet - CalendarFi on Solana",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "programs"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=frontend",
+    "test": "npm run test --workspace=programs",
+    "deploy": "npm run deploy --workspace=programs",
+    "lint": "npm run lint --workspace=frontend && npm run lint --workspace=programs",
+    "format": "npm run format --workspace=frontend && npm run format --workspace=programs"
+  },
+  "keywords": [
+    "solana",
+    "calendar",
+    "blockchain",
+    "web3",
+    "dapp"
+  ],
+  "author": "CalendarFi Team",
+  "license": "MIT"
+}
+
