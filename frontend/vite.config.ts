@@ -3,7 +3,10 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react({
+    jsxRuntime: 'automatic',
+    jsxImportSource: 'react'
+  })],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -23,11 +26,15 @@ export default defineConfig({
     outDir: "dist",
     assetsDir: "assets",
     sourcemap: false,
+    minify: 'terser',
     rollupOptions: {
       output: {
         manualChunks: undefined,
       },
     },
+  },
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
   },
   base: "/",
 });
