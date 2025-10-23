@@ -12,8 +12,7 @@ anchor-lang = "0.29.0"
 anchor-spl = "0.29.0"
 solana-program = "1.18.0"
 spl-token = "4.0"
-spl-token-metadata = "0.3"
-clockwork-sdk = "2.0"
+# Removed problematic dependencies for now
 
 [dev-dependencies]
 anchor-client = "0.29.0"

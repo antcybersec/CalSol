@@ -32,10 +32,11 @@ lerna-debug.log*
 *.swo
 *~
 
-# Solana
-.anchor/
-target/
-Cargo.lock
+# Solana - Only ignore build artifacts, not essential files
+# .anchor/ - Commented out to allow Anchor config
+target/debug/
+target/release/
+# Cargo.lock - Commented out to allow dependency locking
 
 # OS
 .DS_Store
