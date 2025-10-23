@@ -2,25 +2,22 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: Number(process.env.PORT) || 8080,
-    allowedHosts: ["calsol.onrender.com"], // ✅ allow Render domain
-  },
-  preview: {
-    host: "::",
-    port: Number(process.env.PORT) || 8080,
-    allowedHosts: ["calsol.onrender.com"], // ✅ same for preview builds
-  },
-  plugins: [react({
-    jsxRuntime: 'automatic'
-  })],
+export default defineConfig({
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  server: {
+    host: "::",
+    port: Number(process.env.PORT) || 8080,
+    allowedHosts: ["calsol.onrender.com"],
+  },
+  preview: {
+    host: "::",
+    port: Number(process.env.PORT) || 8080,
+    allowedHosts: ["calsol.onrender.com"],
   },
   build: {
     outDir: "dist",
@@ -32,5 +29,5 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-  base: "/", // 👈 optional: ensures relative paths resolve correctly on Render
-}));
+  base: "/",
+});
