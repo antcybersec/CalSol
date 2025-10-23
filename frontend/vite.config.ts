@@ -6,13 +6,13 @@ import path from "path";
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
-    port: process.env.PORT || 8080,
-    allowedHosts: "all",
+    port: Number(process.env.PORT) || 8080,
+    allowedHosts: ["calsol.onrender.com"], // ✅ allow Render domain
   },
   preview: {
     host: "::",
-    port: process.env.PORT || 8080,
-    allowedHosts: "all",
+    port: Number(process.env.PORT) || 8080,
+    allowedHosts: ["calsol.onrender.com"], // ✅ same for preview builds
   },
   plugins: [react()],
   resolve: {
@@ -30,5 +30,5 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-  base: "/",
+  base: "/", // 👈 optional: ensures relative paths resolve correctly on Render
 }));
