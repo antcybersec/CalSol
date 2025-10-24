@@ -18,7 +18,7 @@ interface CalendarEvent {
   signature?: string;
 }
 
-export default function Dashboard() {
+function Dashboard() {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(true);
@@ -715,3 +715,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+export default Dashboard;
