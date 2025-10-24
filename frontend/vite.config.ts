@@ -12,10 +12,12 @@ export default defineConfig({
   server: {
     host: "::",
     port: Number(process.env.PORT) || 8080,
+    allowedHosts: ["calsol.onrender.com"],
   },
   preview: {
     host: "::",
     port: Number(process.env.PORT) || 8080,
+    allowedHosts: ["calsol.onrender.com"],
   },
   build: {
     outDir: "dist",
