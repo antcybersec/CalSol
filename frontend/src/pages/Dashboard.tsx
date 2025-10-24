@@ -7,7 +7,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Calendar, Plus, Trash2, Play, Copy, Check, AlertCircle } from "lucide-react";
-import { useTheme } from "next-themes";
 
 interface CalendarEvent {
   id: string;
@@ -20,7 +19,6 @@ interface CalendarEvent {
 }
 
 export default function Dashboard() {
-  const { theme } = useTheme();
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(true);

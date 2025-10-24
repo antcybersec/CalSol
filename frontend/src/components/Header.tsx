@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, Wallet } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Wallet } from "lucide-react";
 import { useState } from "react";
 
 export const Header = () => {
-  const { theme, setTheme } = useTheme();
   const [walletConnected, setWalletConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
 
@@ -62,17 +60,6 @@ export const Header = () => {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full"
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-
             {walletConnected ? (
               <div className="flex items-center gap-2">
                 <div className="text-xs font-medium px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-600 dark:text-green-400">
