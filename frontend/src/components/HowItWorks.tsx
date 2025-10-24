@@ -1,103 +1,99 @@
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Copy } from "lucide-react";
+import { Calendar, Wallet, Clock, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const HowItWorks = () => {
+  const steps = [
+    {
+      number: "01",
+      title: "Connect Your Calendar",
+      description: "Onboard your Google Calendar with CalSol to enable calendar-based transactions.",
+      icon: Calendar,
+      details: [
+        "Copy the CalSol service account email",
+        "Invite it to your Google Calendar",
+        "Grant 'Make changes to events' permission",
+        "Enter your calendar ID to onboard"
+      ]
+    },
+    {
+      number: "02", 
+      title: "Create Transaction Events",
+      description: "Create calendar events with transaction titles. The CalSol agent will automatically process them.",
+      icon: Wallet,
+      details: [
+        "Create events with titles like 'Send 5 SOL to wallet_address'",
+        "Set specific dates and times for execution",
+        "Add transaction details in event descriptions",
+        "The agent monitors your calendar for new events"
+      ]
+    },
+    {
+      number: "03",
+      title: "Automatic Execution",
+      description: "Transactions execute automatically at the scheduled time on the Solana blockchain.",
+      icon: Clock,
+      details: [
+        "The CalSol agent checks your calendar every few minutes",
+        "When an event's time arrives, the transaction is executed",
+        "You receive confirmation with transaction signatures",
+        "All transactions are recorded on the Solana blockchain"
+      ]
+    }
+  ];
+
   return (
-    <section className="py-20 px-4">
-      <div className="container mx-auto max-w-3xl">
+    <section id="get-started" className="py-16 px-4">
+      <div className="container mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Get Started in 3 Simple Steps
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            How CalSol Works
           </h2>
-          <p className="text-muted-foreground">
-            Set up your CalSol wallet in minutes and start scheduling Solana transactions.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Get started with calendar-based Solana transactions in just three simple steps.
           </p>
         </div>
 
-        <div className="bg-card border border-border rounded-2xl p-8 md:p-12 space-y-8">
-          <div className="space-y-3">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-foreground text-background rounded-full flex items-center justify-center font-bold">
-                1
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-lg mb-2">Copy Service Account Email</h3>
-                <p className="text-sm text-muted-foreground mb-3">
-                  Copy the CalSol agent's service account email below. This is your unique agent identifier.
-                </p>
-                <div className="flex gap-2">
-                  <Input
-                    readOnly
-                    value="calendefi-agent@coders-connect-450316.iam.gserviceaccount.com"
-                    className="bg-secondary/30 border-border font-mono text-sm"
-                  />
-                  <Button variant="outline" size="icon">
-                    <Copy className="h-4 w-4" />
-                  </Button>
+        <div className="max-w-4xl mx-auto">
+          {steps.map((step, index) => (
+            <div key={index} className="mb-12">
+              <Card className="p-8">
+                <div className="flex flex-col lg:flex-row gap-8">
+                  <div className="flex-shrink-0">
+                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
+                      <step.icon className="h-8 w-8 text-primary" />
+                    </div>
+                    <div className="text-4xl font-bold text-primary mb-2">{step.number}</div>
+                  </div>
+                  
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
+                    <p className="text-lg text-muted-foreground mb-6">{step.description}</p>
+                    
+                    <div className="space-y-3">
+                      {step.details.map((detail, detailIndex) => (
+                        <div key={detailIndex} className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                          <p className="text-sm text-muted-foreground">{detail}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Card>
             </div>
-          </div>
+          ))}
+        </div>
 
-          <div className="space-y-3">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-foreground text-background rounded-full flex items-center justify-center font-bold">
-                2
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-lg mb-2">Onboard Your Calendar</h3>
-                <p className="text-sm text-muted-foreground mb-3">
-                  After inviting the service account to your calendar, enter your calendar ID below to onboard it with CalSol.
-                </p>
-                <ol className="text-sm text-muted-foreground space-y-1 mb-3 ml-4 list-decimal">
-                  <li>Open Google Calendar</li>
-                  <li>Click "+" next to "Add new calendar"</li>
-                  <li>Invite the service account email as a collaborator</li>
-                  <li>Grant "Make changes to events" permission</li>
-                  <li>Copy your calendar ID from the calendar settings</li>
-                </ol>
-                <div className="flex gap-2">
-                  <Input 
-                    placeholder="Enter your calendar ID (e.g., smith@group.calendar.google.com)"
-                    className="bg-background border-border"
-                  />
-                  <Button className="whitespace-nowrap">Onboard</Button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-foreground text-background rounded-full flex items-center justify-center font-bold">
-                3
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-lg mb-2">Start Creating Transactions</h3>
-                <p className="text-sm text-muted-foreground mb-3">
-                  Create calendar events with transaction titles. The agent will automatically process them.
-                </p>
-                <div className="bg-secondary/30 border border-border rounded-lg p-4 font-mono text-sm space-y-1">
-                  <div><span className="text-muted-foreground">Event Title:</span> "Send 5 SOL to wallet_address"</div>
-                  <div><span className="text-muted-foreground">Time:</span> When you want the transaction to execute</div>
-                  <div><span className="text-muted-foreground">Attendees:</span> Optional - for group approval</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-6 text-center">
-            <Button size="lg" className="w-full md:w-auto">
+        <div className="text-center mt-12">
+          <Button asChild size="lg" className="text-lg px-8 py-6">
+            <Link to="/dashboard" className="flex items-center gap-2">
+              <Calendar className="h-5 w-5" />
               Start Using CalSol
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </Button>
-            <p className="text-sm text-muted-foreground mt-4">
-              Need help? Check our documentation or contact support.
-            </p>
-          </div>
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

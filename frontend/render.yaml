@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: calsol-frontend
-    env: node
-    buildCommand: npm install && npm run build
-    startCommand: npm start
-    staticPublishPath: ./dist

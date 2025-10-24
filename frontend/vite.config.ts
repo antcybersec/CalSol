@@ -3,10 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
-  plugins: [react({
-    jsxRuntime: 'automatic',
-    jsxImportSource: 'react'
-  })],
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -15,12 +12,10 @@ export default defineConfig({
   server: {
     host: "::",
     port: Number(process.env.PORT) || 8080,
-    allowedHosts: ["calsol.onrender.com"],
   },
   preview: {
     host: "::",
     port: Number(process.env.PORT) || 8080,
-    allowedHosts: ["calsol.onrender.com"],
   },
   build: {
     outDir: "dist",
@@ -32,9 +27,6 @@ export default defineConfig({
         manualChunks: undefined,
       },
     },
-  },
-  define: {
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
   },
   base: "/",
 });

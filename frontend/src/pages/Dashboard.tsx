@@ -43,7 +43,7 @@ export default function Dashboard() {
     amount: "",
   });
 
-  const serviceAccountEmail = "calendefi-agent@coders-connect-450316.iam.gserviceaccount.com";
+  const serviceAccountEmail = "calsol-agent@coders-connect-450316.iam.gserviceaccount.com";
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(serviceAccountEmail);
