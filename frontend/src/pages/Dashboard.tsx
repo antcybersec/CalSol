@@ -31,7 +31,7 @@ function Dashboard() {
     balance: string;
     explorerUrl: string;
   } | null>(null);
-  const [pollingInterval, setPollingInterval] = useState<NodeJS.Timeout | null>(null);
+  const [, setPollingInterval] = useState<NodeJS.Timeout | null>(null);
   const [formData, setFormData] = useState({
     title: "",
     description: "",

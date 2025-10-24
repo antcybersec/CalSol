@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import Dashboard from "./pages/Dashboard";
-import NotFound from "./pages/NotFound";
+import Index from "./pages/Index.tsx";
+import Dashboard from "./pages/Dashboard.tsx";
+import NotFound from "./pages/NotFound.tsx";
 
 const App = () => (
   <BrowserRouter>
