@@ -49,6 +49,8 @@ function Dashboard() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const API_URL = import.meta.env.VITE_API_URL || "https://cal-sol-frontend-k22x.vercel.app";
+
   const handleOnboardCalendar = async () => {
     if (!calendarId.trim()) {
       setOnboardingError("Please enter your calendar ID");
@@ -56,7 +58,7 @@ function Dashboard() {
     }
 
     try {
-      const response = await fetch("https://calsol-backend.onrender.com/api/calendar/onboard", {
+      const response = await fetch(`${API_URL}/api/calendar/onboard`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ calendarId }),
@@ -84,7 +86,7 @@ function Dashboard() {
   const fetchCalendarWallet = async (calId: string) => {
     try {
       const response = await fetch(
-        `https://calsol-backend.onrender.com/api/calendar/wallet/${encodeURIComponent(calId)}`
+        `${API_URL}/api/calendar/wallet/${encodeURIComponent(calId)}`
       );
 
       if (!response.ok) {
@@ -105,7 +107,7 @@ function Dashboard() {
     
     try {
       const response = await fetch(
-        `https://calsol-backend.onrender.com/api/calendar/event-statuses/${encodeURIComponent(calendarId)}`
+        `${API_URL}/api/calendar/event-statuses/${encodeURIComponent(calendarId)}`
       );
       
       if (!response.ok) return;
@@ -157,7 +159,7 @@ function Dashboard() {
     if (!calendarId) return;
     
     try {
-      const response = await fetch("https://calsol-backend.onrender.com/api/calendar/check-events", {
+      const response = await fetch(`${API_URL}/api/calendar/check-events`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ calendarId }),
@@ -182,8 +184,8 @@ function Dashboard() {
     try {
       // Fetch both Google Calendar events AND scheduled events from backend
       const [calendarResponse, scheduledResponse] = await Promise.all([
-        fetch(`https://calsol-backend.onrender.com/api/calendar/events?calendarId=${encodeURIComponent(calId)}`),
-        fetch(`https://calsol-backend.onrender.com/api/calendar/scheduled-events/${encodeURIComponent(calId)}`)
+        fetch(`${API_URL}/api/calendar/events?calendarId=${encodeURIComponent(calId)}`),
+        fetch(`${API_URL}/api/calendar/scheduled-events/${encodeURIComponent(calId)}`)
       ]);
 
       const events = [];
@@ -248,7 +250,7 @@ function Dashboard() {
           eventDescription = `Transaction: Send ${formData.amount} SOL to ${formData.recipientAddress}\n\n${formData.description}`;
         }
 
-        const response = await fetch("https://calsol-backend.onrender.com/api/calendar/create-event", {
+        const response = await fetch(`${API_URL}/api/calendar/create-event`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -302,7 +304,7 @@ function Dashboard() {
       );
 
       // Execute transaction via backend
-      const response = await fetch("https://calsol-backend.onrender.com/api/transaction/execute", {
+      const response = await fetch(`${API_URL}/api/transaction/execute`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
