@@ -49,7 +49,7 @@ function Dashboard() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const API_URL = import.meta.env.VITE_API_URL || "https://cal-sol-frontend-k22x.vercel.app";
+  const API_URL = import.meta.env.VITE_API_URL || "https://calsol-backend.onrender.com";
 
   const handleOnboardCalendar = async () => {
     if (!calendarId.trim()) {

@@ -1,7 +1,7 @@
 import { Connection, PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } from "@solana/web3.js";
 
 const RPC_URL = import.meta.env.VITE_SOLANA_RPC_URL || "https://api.devnet.solana.com";
-const API_URL = import.meta.env.VITE_API_URL || "https://cal-sol-frontend-k22x.vercel.app";
+const API_URL = import.meta.env.VITE_API_URL || "https://calsol-backend.onrender.com";
 
 export const connection = new Connection(RPC_URL, "confirmed");
 
